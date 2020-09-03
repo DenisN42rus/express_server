@@ -1,0 +1,10 @@
+extends ../_template
+
+block content
+	header.header
+		.container.header__container
+			.header__content
+				if (message)
+					p.error__text= message
+				if (error)
+					p.error__text= error

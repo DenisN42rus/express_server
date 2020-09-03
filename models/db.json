@@ -1,0 +1,55 @@
+{
+  "works": [
+    {
+      "src": "./assets/img/products/Work1.jpg",
+      "name": "Вино вдохновение",
+      "price": 600
+    },
+    {
+      "src": "\\upload\\Work2.jpg",
+      "name": "Вино Ceramic",
+      "price": "700"
+    },
+    {
+      "src": "\\upload\\Work3.jpg",
+      "name": "Очки",
+      "price": "350"
+    },
+    {
+      "src": "\\upload\\Work6.jpg",
+      "name": "Кружка",
+      "price": "500"
+    },
+    {
+      "src": "\\upload\\Work8.jpg",
+      "name": "Лампа",
+      "price": "1000"
+    }
+  ],
+  "skills": [
+    {
+      "name": "age",
+      "number": "10",
+      "text": "Возраст начала занятий на скрипке"
+    },
+    {
+      "name": "concerts",
+      "number": "90",
+      "text": "Концертов отыграл"
+    },
+    {
+      "name": "cities",
+      "number": "40",
+      "text": "Максимальное число городов в туре"
+    },
+    {
+      "name": "years",
+      "number": "44",
+      "text": "Лет на сцене в качестве скрипача"
+    }
+  ],
+  "user": {
+    "login": "test@test.com",
+    "password": "123"
+  }
+}
