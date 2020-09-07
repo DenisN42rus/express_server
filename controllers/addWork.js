@@ -4,7 +4,7 @@ const fs = require('fs');
 const db = require('../models/db');
 const validation = require('../utils/validate');
 
-const addWork = (ctx) => {
+const addWork = (req, res, next) => {
   let form = new formidable.IncomingForm();
   let upload = path.join('./public', 'upload');
 
@@ -14,17 +14,17 @@ const addWork = (ctx) => {
 
   form.uploadDir = path.join(process.cwd(), upload);
 
-  form.parse(ctx, (err, fields, files) => {
+  form.parse(req, (err, fields, files) => {
     if (err) {
-      return ctx.next(err);
+      return next(err);
     }
 
     const valid = validation(fields, files);
 
     if (valid.err) {
       fs.unlinkSync(files.photo.path);
-      console.error(`${valid.status}`);
-      return ctx.res.redirect('/');
+      req.flash('msgfile', `${valid.status}`);
+      return res.render('pages/admin', {msgfile: req.flash('msgfile').toString()});
     }
 
     const fileName = path.join(upload, files.photo.name);
@@ -39,8 +39,8 @@ const addWork = (ctx) => {
 
       db.saveWork({src: dir, name: fields.name, price: fields.price});
 
-      ctx.flash('msgfile', 'Работа добавлена успешно');
-      ctx.res.render('pages/admin', {msgfile: ctx.flash('msgfile')});
+      req.flash('msgfile', 'Работа добавлена успешно');
+      res.render('pages/admin', {msgfile: req.flash('msgfile').toString()});
     });
   });
 };

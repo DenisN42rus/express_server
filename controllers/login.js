@@ -1,15 +1,16 @@
 const db = require('../models/db');
+const psw = require('../utils/password');
 
-const login = (ctx) => {
-  const {email, password} = ctx.body;
+const login = (req, res) => {
+  const {email, password} = req.body;
   const user = db.getUser();
 
-  if (email === user.login && password === user.password) {
-    ctx.session.isAdmin = true;
-    ctx.res.redirect('/admin');
+  if (email === user.login && psw.validPassword(password)) {
+    req.session.isAdmin = true;
+    res.redirect('/admin');
   } else {
-  	ctx.flash('msglogin', 'Неверный логин или пароль');
-    ctx.res.render('pages/login', {msglogin: ctx.flash('msglogin')});
+    req.flash('msglogin', 'Неверный логин или пароль');
+    res.render('pages/login', {msglogin: req.flash('msglogin').toString()});
   }
 };
 

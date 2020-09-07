@@ -24,6 +24,11 @@
       "src": "\\upload\\Work8.jpg",
       "name": "Лампа",
       "price": "1000"
+    },
+    {
+      "src": "\\upload\\Work8.jpg",
+      "name": "lampa",
+      "price": "10000"
     }
   ],
   "skills": [
@@ -34,7 +39,7 @@
     },
     {
       "name": "concerts",
-      "number": "90",
+      "number": "72",
       "text": "Концертов отыграл"
     },
     {
@@ -50,6 +55,7 @@
   ],
   "user": {
     "login": "test@test.com",
-    "password": "123"
+    "hash": "b23015959385e3147ae476a2177ad2d3ccb29fd85ce6fd7a92b29322ac5f4203a3c199b1dffccf4a17e4c29056564e9d6b2dbead03e6bef6d6c7f3c14169355e27ef1563ead291f1b791e7b51de4ebc42bddd7244a4380ba487527431c42a56d334b5b677aff8fa51faf09d8c64c2fff5e4398c0985be01b183c433960226e4c5a316a68b7848b711b32dae82dd77b4413d49bdbf232bc5c35e38352a48c3bb4beaa8289fa076c3edcf3c42bb44eafb2d4391f26e4b67f736b022a7076b82d0f7d57ce53acce97ba66a37d1aa04d64d8edd08185e7aa975f781624b2b81a1bd201e804c267766ecc8c61ada7e7bdee408eb64e67ab5bc72236d39739aee4f8e6c50969e00d49cd225bc3fbb193785e3963f498371a5cccef3a41b222fc36784b503dd8f47ec702eb0c12b38108b9526a3347efbdae58cc9e79c42c504d3948b5d2143b68fc03100f2edd56b85470feb5b6d0346deb2412ee04633d3c70147bb4284c180665c5a3d93a6389641d33ce30235d628cc1093a2367d0112195f0fe298d95700f36ff6c7451e179191d678c46ce8de18bfbb4ff17383dd23b90be425628f7319cb1a8118f9cabcbec0ef2bc217c4b95bb5b840fe0aa1454fbc9d67d0b6e5463fe06eeb0a57f73b901bc92ac31a01cf655f008016603b3613d7d86a9d9cd4f370b853e32d5a58dcdbdf4f3c93892cc61fc9f6e53c87f0cbaa3d035d2a8",
+    "salt": "bb52192c766ea732ec475f3fb80f018a"
   }
 }

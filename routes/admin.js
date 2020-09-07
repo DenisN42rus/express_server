@@ -1,16 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const isAdmin = require('../utils/isAdmin');
+const {addWorkCtrl, updateSkillsCtrl, renderAdminCtrl} = require('../controllers');
 
-const addWork = require('../controllers').addWorkCtrl;
-const upsateSkills = require('../controllers').upsateSkillsCtrl;
+router.get('/', isAdmin, renderAdminCtrl);
 
-router.get('/', isAdmin, (req, res) => {
-  res.render('pages/admin');
-});
+router.post('/skills', updateSkillsCtrl);
 
-router.post('/skills', upsateSkills);
-
-router.post('/upload', addWork);
+router.post('/upload', addWorkCtrl);
 
 module.exports = router;

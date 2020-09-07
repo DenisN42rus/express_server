@@ -1,11 +1,19 @@
 const loginCtrl = require('./login');
 const sendMailCtrl = require('./sendMail');
-const upsateSkillsCtrl = require('./upsateSkills');
+const updateSkillsCtrl = require('./updateSkills');
 const addWorkCtrl = require('./addWork');
+const renderLoginCtrl = require('./renderLogin');
+const renderMainPageCtrl = require('./renderMainPage');
+const renderAdminCtrl = require('./renderAdmin');
+const notFoundCtrl = require('./notFound');
 
 module.exports = {
   loginCtrl,
   sendMailCtrl,
-  upsateSkillsCtrl,
-  addWorkCtrl
+  updateSkillsCtrl,
+  addWorkCtrl,
+  renderLoginCtrl,
+  renderMainPageCtrl,
+  renderAdminCtrl,
+  notFoundCtrl
 };

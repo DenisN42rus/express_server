@@ -1,15 +1,15 @@
 const nodemailer = require('nodemailer');
 const config = require('../config.json');
-
 const db = require('../models/db');
-const works = db.getWorks() || [];
-const skills = db.getSkills() || [];
 
-const sendMail = (ctx) => {
-  if (!ctx.body.name || !ctx.body.email || !ctx.body.message) {
-    ctx.flash('msgemail', 'Все поля нужно заполнить!');
-    ctx.res.render('pages/index', {
-      msgemail: ctx.flash('msgemail'),
+const sendMail = (req, res) => {
+  const works = db.getWorks() || [];
+  const skills = db.getSkills() || [];
+
+  if (!req.body.name || !req.body.email || !req.body.message) {
+    req.flash('msgemail', 'Все поля нужно заполнить!');
+    res.render('pages/index', {
+      msgemail: req.flash('msgemail').toString(),
       products: works,
       skills: skills
     });
@@ -17,25 +17,25 @@ const sendMail = (ctx) => {
 
   const transporter = nodemailer.createTransport(config.mail.smtp);
   const mailOptions = {
-    from : `"${ctx.body.name}" <${ctx.body.email}>`,
+    from : `"${req.body.name}" <${req.body.email}>`,
     to: config.mail.smtp.auth.user,
     subject: config.mail.subject,
-    text: ctx.body.message.trim().slice(0, 500) + `\n Отправлено с: <${ctx.body.email}>`
+    text: req.body.message.trim().slice(0, 500) + `\n Отправлено с: <${req.body.email}>`
   };
 
   transporter.sendMail(mailOptions, (err) => {
     if (err) {
-      ctx.flash('msgemail', `При отправки письма произошла ошибка!: ${err}`);
-      return ctx.res.render('pages/index', {
-        msgemail: ctx.flash('msgemail'), 
+      req.flash('msgemail', `При отправки письма произошла ошибка!: ${err}`);
+      return res.render('pages/index', {
+        msgemail: req.flash('msgemail').toString(), 
         products: works,
         skills: skills
       });
     }
 
-    ctx.flash('msgemail', 'Письмо успешно отправлено!');
-    ctx.res.render('pages/index', {
-      msgemail: ctx.flash('msgemail'),
+    req.flash('msgemail', 'Письмо успешно отправлено!');
+    res.render('pages/index', {
+      msgemail: req.flash('msgemail').toString(),
       products: works,
       skills: skills
     });

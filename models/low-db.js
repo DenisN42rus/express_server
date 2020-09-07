@@ -6,7 +6,7 @@ const adapter = new FileSync('./models/db.json');
 const db = low(adapter);
 
 const getUser = () => db.getState().user;
-const saveUser = ({login, password}) => db.set('user', {login, password}).write();
+const saveUser = ({login, hash, salt}) => db.set('user', {login, hash, salt}).write();
 const getWorks = () => db.getState().works;
 const saveWork = ({src, name, price}) => 
   db.get('works').push({src, name, price}).write();
